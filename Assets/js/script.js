@@ -5,31 +5,57 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
   let isContinue = true;
-  const arrayEmployes = [];
+  const employeesArray = [];
 
   while (isContinue) {
     var employee = new Object();
     employee.firstName = prompt("Enter first name:");
     employee.lastName = prompt("Enter last name:");
-    employee.salary = prompt("Enter salary:");
+    employee.salary = Number(prompt("Enter salary:"));
+
+    while (employee.firstName === `` || employee.firstName === null) {
+      alert("firstName is empty, please try again");
+      employee.firstName = prompt("Enter first name:");
+    }
+    while (employee.lastName === `` || employee.lastName === null) {
+      alert("lastName is empty, please try again");
+      employee.lastName = prompt("Enter last name:");
+    }
+    firstUpperCase(employee);
+    console.log(employee);
 
     if (isNaN(employee.salary)) {
       employee.salary = 0;
     }
 
-    arrayEmployes.push(employee);
+    employeesArray.push(employee);
 
     if (confirm("Do you want to add another employes?")) {
       continue;
     } else {
-      return arrayEmployes;
+      return employeesArray;
     }
   }
 }
 
+const firstUpperCase = function (employee) {
+  employee.firstName = employee.firstName.charAt(0).toUpperCase() + employee.firstName.slice(1);
+  employee.lastName = employee.lastName.charAt(0).toUpperCase() + employee.lastName.slice(1);
+}
+
+
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
+  let averageSalary = 0;
+  console.log(employeesArray)
+  for (let i = 0; i < employeesArray.length; i++) {
+    console.log(`${i}: ` + employeesArray[i].salary)
+    averageSalary = employeesArray[i].salary;
+  }
+
+  averageSalary = Math.floor(averageSalary / employeesArray.length);
+  console.log(`Average salary: ${averageSalary}\nEmployee count: ${employeesArray.length}`);
 }
 
 // Select a random employee
