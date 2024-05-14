@@ -8,21 +8,34 @@ const collectEmployees = function () {
   const employeesArray = [];
 
   while (isContinue) {
+    // create new employee
     var employee = new Object();
+
     employee.firstName = prompt("Enter first name:");
-    while (employee.firstName === `` || employee.firstName === null) {
+
+    if (employee.firstName === null) {
+      return employeesArray;
+    }
+
+    while (employee.firstName === ``) {
       alert("firstName is empty, please try again");
       employee.firstName = prompt("Enter first name:");
     }
+
     employee.lastName = prompt("Enter last name:");
-    while (employee.lastName === `` || employee.lastName === null) {
+
+    if (employee.lastName === null) {
+      return employeesArray;
+    }
+
+    while (employee.lastName === ``) {
       alert("lastName is empty, please try again");
       employee.lastName = prompt("Enter last name:");
     }
+
     employee.salary = Number(prompt("Enter salary:"));
 
     firstUpperCase(employee);
-    console.log(employee);
 
     if (isNaN(employee.salary)) {
       employee.salary = 0;
