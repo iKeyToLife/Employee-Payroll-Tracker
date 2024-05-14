@@ -10,17 +10,17 @@ const collectEmployees = function () {
   while (isContinue) {
     var employee = new Object();
     employee.firstName = prompt("Enter first name:");
-    employee.lastName = prompt("Enter last name:");
-    employee.salary = Number(prompt("Enter salary:"));
-
     while (employee.firstName === `` || employee.firstName === null) {
       alert("firstName is empty, please try again");
       employee.firstName = prompt("Enter first name:");
     }
+    employee.lastName = prompt("Enter last name:");
     while (employee.lastName === `` || employee.lastName === null) {
       alert("lastName is empty, please try again");
       employee.lastName = prompt("Enter last name:");
     }
+    employee.salary = Number(prompt("Enter salary:"));
+
     firstUpperCase(employee);
     console.log(employee);
 
