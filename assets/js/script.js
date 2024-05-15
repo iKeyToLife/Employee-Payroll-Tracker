@@ -62,7 +62,7 @@ const firstUpperCase = function (employee) {
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
   let averageSalary = 0;
-  console.log(employeesArray)
+
   for (let i = 0; i < employeesArray.length; i++) {
     averageSalary = averageSalary + employeesArray[i].salary;
   }
