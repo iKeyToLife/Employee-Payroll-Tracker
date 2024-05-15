@@ -1,11 +1,11 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
+const employeesArray = [];
 
 // Collect employee data
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
   let isContinue = true;
-  const employeesArray = [];
 
   while (isContinue) {
     // create new employee
