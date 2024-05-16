@@ -71,6 +71,8 @@ function validateName(firstOrLastName) {
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
+
+  // check is empty array
   if (employeesArray.length === 0) {
     return console.log(`The company does not list any employees. 
     \nAt least 1 employee is required to calculate the average salary.
@@ -89,11 +91,14 @@ const displayAverageSalary = function (employeesArray) {
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
+
+  // check is empty array
   if (employeesArray.length === 0) {
     return console.log(`The company does not list any employees.
     \nAt least 1 employee is required for random selection.
     \nempplyeesArray count: ${employeesArray.length}`)
   }
+
   const randomEmployee = employeesArray[Math.floor(Math.random() * employeesArray.length)];
   console.log(randomEmployee);
   console.log(`Random employee:\nfirst name: ${randomEmployee.firstName}\nlast name: ${randomEmployee.lastName}`)
