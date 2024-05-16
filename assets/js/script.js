@@ -37,7 +37,7 @@ const collectEmployees = function () {
     // make string to number
     employee.salary = parseFloat(Number(prompt("Enter salary:")).toFixed(2));
 
-    firstUpperCase(employee);
+    capitalizeEmployeeName(employee);
 
     if (isNaN(employee.salary)) {
       employee.salary = 0;
@@ -53,9 +53,10 @@ const collectEmployees = function () {
   }
 }
 
-const firstUpperCase = function (employee) {
-  employee.firstName = employee.firstName.charAt(0).toUpperCase() + employee.firstName.slice(1);
-  employee.lastName = employee.lastName.charAt(0).toUpperCase() + employee.lastName.slice(1);
+// correct case
+const capitalizeEmployeeName = function (employee) {
+  employee.firstName = employee.firstName.charAt(0).toUpperCase() + employee.firstName.toLowerCase().slice(1);
+  employee.lastName = employee.lastName.charAt(0).toUpperCase() + employee.lastName.toLowerCase().slice(1);
 }
 
 function validateName(firstOrLastName) {
