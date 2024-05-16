@@ -10,33 +10,25 @@ const collectEmployees = function () {
     // create new employee
     var employee = new Object();
 
-    employee.firstName = prompt("Enter first name:");
+    const firstName = "first name";
+    const lastName = "last name";
 
-    // if user send empty prompt or cancel prompt or check validate name
-    while (employee.firstName === `` || employee.firstName === null || !validateName(employee.firstName)) {
-      // return array if cancel
-      if (employee.firstName === null) {
-        return employeesArray;
-      }
-      alert("First name is empty or contains invalid characters. Please enter letters only.");
-      employee.firstName = prompt("Enter first name:");
+    employee.firstName = checkName(firstName, prompt("Enter first name:"));
+    // check cancel
+    if (employee.firstName === null) {
+      return employeesArray;
     }
 
-    employee.lastName = prompt("Enter last name:");
-
-    // if user send empty prompt or cancel prompt or check validate name
-    while (employee.lastName === `` || employee.lastName === null || !validateName(employee.lastName)) {
-      // return array if cancel
-      if (employee.lastName === null) {
-        return employeesArray;
-      }
-      alert("Last name is empty or contains invalid characters. Please enter letters only.");
-      employee.lastName = prompt("Enter last name:");
+    employee.lastName = checkName(lastName, prompt("Enter last name:"));
+    // check cancel
+    if (employee.lastName === null) {
+      return employeesArray;
     }
 
     // make string to number
     employee.salary = parseFloat(Number(prompt("Enter salary:")).toFixed(2));
 
+    // make first char toUpperCase and after toLowerCase
     capitalizeEmployeeName(employee);
 
     if (isNaN(employee.salary)) {
@@ -51,6 +43,18 @@ const collectEmployees = function () {
       return employeesArray;
     }
   }
+}
+
+// if user send empty prompt or cancel prompt or check validate name
+function checkName(lastOrFirst, employeeName) {
+  while (employeeName === `` || employeeName === null || !validateName(employeeName)) {
+    if (employeeName === null) {
+      return null;
+    }
+    alert(`${lastOrFirst} is empty or contains invalid characters. Please enter letters only.`);
+    employeeName = prompt(`Enter ${lastOrFirst}:`);
+  }
+  return employeeName;
 }
 
 // correct case
