@@ -12,29 +12,29 @@ const collectEmployees = function () {
 
     employee.firstName = prompt("Enter first name:");
 
-    // if user send empty prompt or cancel prompt
-    while (employee.firstName === `` || employee.firstName === null) {
+    // if user send empty prompt or cancel prompt or check validate name
+    while (employee.firstName === `` || employee.firstName === null || !validateName(employee.firstName)) {
+      // return array if cancel
       if (employee.firstName === null) {
         return employeesArray;
       }
-      alert("firstName is empty, please try again");
+      alert("First name is empty or contains invalid characters. Please enter letters only.");
       employee.firstName = prompt("Enter first name:");
     }
 
     employee.lastName = prompt("Enter last name:");
-    // if user send empty prompt or cancel prompt
-    if (employee.lastName === null) {
-      return employeesArray;
-    }
 
-    while (employee.lastName === `` || employee.lastName === null) {
+    // if user send empty prompt or cancel prompt or check validate name
+    while (employee.lastName === `` || employee.lastName === null || !validateName(employee.lastName)) {
+      // return array if cancel
       if (employee.lastName === null) {
         return employeesArray;
       }
-      alert("lastName is empty, please try again");
+      alert("Last name is empty or contains invalid characters. Please enter letters only.");
       employee.lastName = prompt("Enter last name:");
     }
 
+    // make string to number
     employee.salary = parseFloat(Number(prompt("Enter salary:")).toFixed(2));
 
     firstUpperCase(employee);
@@ -56,6 +56,14 @@ const collectEmployees = function () {
 const firstUpperCase = function (employee) {
   employee.firstName = employee.firstName.charAt(0).toUpperCase() + employee.firstName.slice(1);
   employee.lastName = employee.lastName.charAt(0).toUpperCase() + employee.lastName.slice(1);
+}
+
+function validateName(firstOrLastName) {
+  // check validate name, must only ABC or abc
+  var regex = /^[a-zA-Z]+$/;
+
+  // return boolean regex
+  return regex.test(firstOrLastName);
 }
 
 
