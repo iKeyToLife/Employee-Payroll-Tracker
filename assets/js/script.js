@@ -6,9 +6,7 @@ const employeesArray = [];
 // Collect employee data
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
-  let isContinue = true;
-
-  while (isContinue) {
+  while (true) {
     // create new employee
     var employee = new Object();
 
