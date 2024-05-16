@@ -14,22 +14,25 @@ const collectEmployees = function () {
 
     employee.firstName = prompt("Enter first name:");
 
-    if (employee.firstName === null) {
-      return employeesArray;
-    }
-
-    while (employee.firstName === ``) {
+    // if user send empty prompt or cancel prompt
+    while (employee.firstName === `` || employee.firstName === null) {
+      if (employee.firstName === null) {
+        return employeesArray;
+      }
       alert("firstName is empty, please try again");
       employee.firstName = prompt("Enter first name:");
     }
 
     employee.lastName = prompt("Enter last name:");
-
+    // if user send empty prompt or cancel prompt
     if (employee.lastName === null) {
       return employeesArray;
     }
 
-    while (employee.lastName === ``) {
+    while (employee.lastName === `` || employee.lastName === null) {
+      if (employee.lastName === null) {
+        return employeesArray;
+      }
       alert("lastName is empty, please try again");
       employee.lastName = prompt("Enter last name:");
     }
