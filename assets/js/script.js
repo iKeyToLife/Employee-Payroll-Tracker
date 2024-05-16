@@ -6,7 +6,9 @@ const employeesArray = [];
 // Collect employee data
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
-  while (true) {
+  let isContinue = true;
+
+  while (isContinue) {
     // create new employee
     var employee = new Object();
 
@@ -16,13 +18,13 @@ const collectEmployees = function () {
     employee.firstName = checkName(firstName, prompt("Enter first name:"));
     // check cancel
     if (employee.firstName === null) {
-      return employeesArray;
+      break;
     }
 
     employee.lastName = checkName(lastName, prompt("Enter last name:"));
     // check cancel
     if (employee.lastName === null) {
-      return employeesArray;
+      break;
     }
 
     // make string to number
@@ -37,12 +39,10 @@ const collectEmployees = function () {
 
     employeesArray.push(employee);
 
-    if (confirm("Do you want to add another employes?")) {
-      continue;
-    } else {
-      return employeesArray;
-    }
+    isContinue = confirm("Do you want to add another employes?")
   }
+
+  return employeesArray;
 }
 
 // if user send empty prompt or cancel prompt or check validate name
@@ -89,7 +89,10 @@ const displayAverageSalary = function (employeesArray) {
   }
 
   averageSalary = averageSalary / employeesArray.length;
-  console.log(`Average salary: $${averageSalary.toFixed(2)}\nEmployee count: ${employeesArray.length}`);
+  console.log(`Average salary: ${averageSalary.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD"
+  })}\nEmployee count: ${employeesArray.length}`);
 }
 
 // Select a random employee
